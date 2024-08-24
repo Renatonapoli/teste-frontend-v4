@@ -1,41 +1,33 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Equipment } from '../../types/Equipment';
-interface EquipmentState {
-  equipment: Equipment[];
-  status: 'idle' | 'loading' | 'failed';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { EquipmentState, EquipmentStateHistory, EquipmentPositionHistory } from '../../types/EquipmentState';
+
+interface EquipmentStateType {
+  states: EquipmentState[];
+  stateHistory: EquipmentStateHistory[];
+  positions: EquipmentPositionHistory[];
 }
 
-const initialState: EquipmentState = {
-  equipment: [],
-  status: 'idle',
+const initialState: EquipmentStateType = {
+  states: [],
+  stateHistory: [],
+  positions: [],
 };
-
-export const fetchEquipment = createAsyncThunk<Equipment[]>(
-  'equipment/fetchEquipment',
-  async () => {
-    const response = await fetch('/data/equipament.json');
-    const data = await response.json();
-    return data;
-  }
-);
 
 const equipmentSlice = createSlice({
   name: 'equipment',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchEquipment.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchEquipment.fulfilled, (state, action) => {
-        state.status = 'idle';
-        state.equipment = action.payload;
-      })
-      .addCase(fetchEquipment.rejected, (state) => {
-        state.status = 'failed';
-      });
+  reducers: {
+    setEquipmentStates(state, action: PayloadAction<EquipmentState[]>) {
+      state.states = action.payload;
+    },
+    setEquipmentStateHistory(state, action: PayloadAction<EquipmentStateHistory[]>) {
+      state.stateHistory = action.payload;
+    },
+    setEquipmentPositions(state, action: PayloadAction<EquipmentPositionHistory[]>) { 
+      state.positions = action.payload;
+    },
   },
 });
 
+export const { setEquipmentStates, setEquipmentStateHistory, setEquipmentPositions } = equipmentSlice.actions;
 export default equipmentSlice.reducer;
