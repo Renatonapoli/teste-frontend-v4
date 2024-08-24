@@ -3,7 +3,7 @@ import { Equipment } from '../types/Equipment';
 
 interface EquipmentModalProps {
   equipment: Equipment | null;
-  onClose: () => void; 
+  onClose: () => void;
 }
 
 const EquipmentModal: React.FC<EquipmentModalProps> = ({ equipment, onClose }) => {

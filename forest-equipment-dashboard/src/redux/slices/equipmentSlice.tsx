@@ -1,18 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchEquipments as fetchEquipmentsService } from '../../services/equipmentService';
 import { Equipment } from '../../types/Equipment';
-
 interface EquipmentState {
-  equipments: Equipment[];
-  loading: boolean;
-  error: string | null;
+  equipment: Equipment[];
+  status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: EquipmentState = {
-  equipments: [],
-  loading: false,
-  error: null,
+  equipment: [],
+  status: 'idle',
 };
+
+export const fetchEquipment = createAsyncThunk<Equipment[]>(
+  'equipment/fetchEquipment',
+  async () => {
+    const response = await fetch('/data/equipament.json');
+    const data = await response.json();
+    return data;
+  }
+);
 
 const equipmentSlice = createSlice({
   name: 'equipment',
@@ -20,31 +25,17 @@ const equipmentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchEquipments.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+      .addCase(fetchEquipment.pending, (state) => {
+        state.status = 'loading';
       })
-      .addCase(fetchEquipments.fulfilled, (state, action) => {
-        state.loading = false;
-        state.equipments = action.payload;
+      .addCase(fetchEquipment.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.equipment = action.payload;
       })
-      .addCase(fetchEquipments.rejected, (state, action) => {
-        state.loading = false;
-        state.error = (action.payload as string) || 'Erro desconhecido';
+      .addCase(fetchEquipment.rejected, (state) => {
+        state.status = 'failed';
       });
   },
 });
-
-export const fetchEquipments = createAsyncThunk(
-  'equipment/fetchEquipments',
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await fetchEquipmentsService();
-      return response.equipments;
-    } catch (error) {
-      return rejectWithValue((error as Error).message);
-    }
-  }
-);
 
 export default equipmentSlice.reducer;
