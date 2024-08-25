@@ -114,7 +114,7 @@ const Dashboard: React.FC = () => {
                 <div>
                   <span className="bold-text">ID do equipamento:</span> {equipment.equipmentId}<br />
                   <span className="bold-text">Data:</span> {new Date(pos.date).toLocaleString()}<br />
-                  <span className="bold-text">Estatus:</span> <span style={{ color: iconColor }}>{state?.name || 'Unknown'}</span>
+                  <span className="bold-text">Status:</span> <span style={{ color: iconColor }}>{state?.name || 'Unknown'}</span>
                 </div>
               </Popup>
             </Marker>
