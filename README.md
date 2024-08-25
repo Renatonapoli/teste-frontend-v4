@@ -23,18 +23,47 @@ O **Forest Equipment Dashboard** é uma aplicação web que exibe a localizaçã
 
 ## Passos para Executar o Projeto Localmente
 
-### 1. Clone o Repositório
-
-
+### Clone o Repositório
 
 Clone o repositório para o seu ambiente local:
 
+# Clone o repositório fork
+
 ```bash
 git clone https://github.com/Renatonapoli/teste-frontend-v4.git
-cd forest-equipment-dashboard
 ```
 
-### 2. Instale as dependências
+# Navegue para o diretório do repositório
+
+```bash
+cd teste-frontend-v4
+```
+
+# Verifique as branches remotas disponíveis
+
+```bash
+git fetch
+git branch -r
+```
+
+# Faça o checkout da branch específica
+
+```bash
+git checkout teste/Renato-Napoli-Guimaraes
+```
+
+# Se a branch não estiver disponível localmente
+
+```bash
+git checkout -b teste/Renato-Napoli-Guimaraes origin/teste/Renato-Napoli-Guimaraes
+```
+# Atualize o repositório local
+
+```bash
+git pull
+```
+
+### Instale as dependências
 
 Instale as dependências do projeto:
 
@@ -42,7 +71,7 @@ Instale as dependências do projeto:
 npm install
 ```
 
-### 3. Instale Dependências Adicionais para Testes
+### Instale Dependências Adicionais para Testes
 
 Se ainda não o fez, instale ts-jest e @types/jest (garantindo que a versão do Jest seja compatível):
 ```bash
@@ -64,7 +93,7 @@ Para executar os testes unitários, use o comando:
 ```bash
 npm test
 ```
-### 6. Construir o Projeto
+### Construir o Projeto
 
 Para criar uma versão otimizada para produção, utilize:
 ```bash
