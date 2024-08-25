@@ -1,7 +1,33 @@
+.titulo {
+  
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  background-color: #86d8ef;
+  width: 100%;
+  
+}
+
+.header h1 {
+  margin-left: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title-image {
+  margin-right: 20px;
+  width: 10vw; 
+  height: 10vh;
+
+}
+
 .card {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   margin: 16px;
   padding: 16px;
   width: calc(100% - 32px); 
@@ -36,11 +62,11 @@
 .search-card {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   margin: 16px;
   padding: 16px;
-  width: calc(100% - 32px); /* Ajuste a largura conforme necessário */
-  max-width: 600px; /* Ajuste a largura máxima conforme necessário */
+  width: calc(100% - 32px); 
+  max-width: 600px; 
 }
 
 .search-card h2 {
@@ -50,7 +76,7 @@
 
 .search-card input, 
 .search-card select {
-  width: 100%;
+  width: calc(100% - 32px);   
   padding: 8px;
   margin: 8px 0;
   border: 1px solid #ddd;

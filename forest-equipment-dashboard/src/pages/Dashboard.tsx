@@ -9,6 +9,7 @@ import equipmentStateHistoryData from '../data/equipmentStateHistory.json';
 import equipmentPositionData from '../data/equipmentPositionHistory.json';
 import 'leaflet/dist/leaflet.css';
 import '../styles/Dashboard.css'; 
+import aikon from '../assets/img/aiko.png'
 
 const createCustomIcon = (color: string) => {
   return L.icon({
@@ -32,8 +33,7 @@ const Dashboard: React.FC = () => {
   // Declarando as variáveis de filtro
   const [filterId, setFilterId] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
-  const [filterModel, setFilterModel] = useState('');
-
+  
   useEffect(() => {
     dispatch(setEquipmentStates(equipmentStateData));
     dispatch(setEquipmentStateHistory(equipmentStateHistoryData));
@@ -53,18 +53,18 @@ const Dashboard: React.FC = () => {
   
     return (
       (filterId === '' || equipment.equipmentId.includes(filterId)) &&
-      (filterStatus === '' || hasMatchingStatus) &&
-      (filterModel === '' || equipment.equipmentId === filterModel)
+      (filterStatus === '' || hasMatchingStatus) 
     );
   });
 
   const renderEquipmentStates = () => (
     <div className="card">
       <h2>Estado dos Equipamentos</h2>
+      <img src={"../assets/img/aiko.png"} alt="" />
       <ul>
         {states.map(state => (
           <li key={state.id} style={{ color: state.color }}>
-            <span className="bold-text">{state.name}</span>
+            <span>{state.name}</span>
           </li>
         ))}
       </ul>
@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
               const state = getStateById(entry.equipmentStateId);
               return (
                 <li key={idx} style={{ color: state?.color }}>
-                  <span className="bold-text">{new Date(entry.date).toLocaleString()}:</span> 
+                  <span className="bold-text">{new Date(entry.date).toLocaleString()}: </span> 
                   <span>{state?.name || 'Unknown'}</span>
                 </li>
               );
@@ -128,7 +128,10 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
+      <div className="header">
       <h1>Dashboard</h1>
+      <img src={aikon} alt="Logo" className="title-image" />
+    </div>
 
       <div className="search-card">
         <h2>Filtrar Equipamentos</h2>
@@ -144,15 +147,7 @@ const Dashboard: React.FC = () => {
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Modelo"
-          value={filterModel}
-          onChange={(e) => setFilterModel(e.target.value)}
-        />
-        <button onClick={() => { }}>
-          Filtrar
-        </button>
+        
       </div>
 
       <MapContainer center={[-19.15, -46.00]} zoom={10} style={{ height: '600px', width: '100%' }}>
