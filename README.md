@@ -30,7 +30,7 @@ O **Forest Equipment Dashboard** é uma aplicação web que exibe a localizaçã
 Clone o repositório para o seu ambiente local:
 
 ```bash
-git clone https://github.com/usuario/forest-equipment-dashboard.git
+git clone https://github.com/Renatonapoli/teste-frontend-v4.git
 cd forest-equipment-dashboard
 ```
 
