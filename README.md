@@ -27,37 +27,37 @@ O **Forest Equipment Dashboard** é uma aplicação web que exibe a localizaçã
 
 Clone o repositório para o seu ambiente local:
 
-# Clone o repositório fork
+### Clone o repositório fork
 
 ```bash
 git clone https://github.com/Renatonapoli/teste-frontend-v4.git
 ```
 
-# Navegue para o diretório do repositório
+### Navegue para o diretório do repositório
 
 ```bash
 cd teste-frontend-v4
 ```
 
-# Verifique as branches remotas disponíveis
+### Verifique as branches remotas disponíveis
 
 ```bash
 git fetch
 git branch -r
 ```
 
-# Faça o checkout da branch específica
+### Faça o checkout da branch específica
 
 ```bash
 git checkout teste/Renato-Napoli-Guimaraes
 ```
 
-# Se a branch não estiver disponível localmente
+### Se a branch não estiver disponível localmente
 
 ```bash
 git checkout -b teste/Renato-Napoli-Guimaraes origin/teste/Renato-Napoli-Guimaraes
 ```
-# Atualize o repositório local
+### Atualize o repositório local
 
 ```bash
 git pull
