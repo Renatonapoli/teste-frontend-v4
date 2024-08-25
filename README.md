@@ -33,13 +33,7 @@ Clone o repositório para o seu ambiente local:
 git clone https://github.com/Renatonapoli/teste-frontend-v4.git
 ```
 
-### Navegue para o diretório do repositório
-
-```bash
-cd teste-frontend-v4
-```
-
-### Verifique as branches remotas disponíveis
+### Verifique as branches remotas disponíveis através do terminal de sua preferência
 
 ```bash
 git fetch
@@ -61,6 +55,12 @@ git checkout -b teste/Renato-Napoli-Guimaraes origin/teste/Renato-Napoli-Guimara
 
 ```bash
 git pull
+```
+
+### Navegue para a pasta do projeto
+
+```bash
+cd forest-equipment-dashboard
 ```
 
 ### Instale as dependências
