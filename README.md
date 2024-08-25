@@ -61,6 +61,7 @@ git pull
 
 ```bash
 cd forest-equipment-dashboard
+```
 
 ### Instale as dependências
 
